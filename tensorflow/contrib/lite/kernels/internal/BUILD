@@ -26,6 +26,11 @@ NEON_FLAGS_IF_APPLICABLE = select({
         "-mfpu=neon",
         "-mfloat-abi=softfp",
     ],
+    ":armv6": [
+        "-O3",
+        "-mfpu=vfp",
+        "-mfloat-abi=hard",
+    ],
     "//conditions:default": [
         "-O3",
     ],
@@ -65,6 +70,13 @@ config_setting(
     name = "armeabi-v7a",
     values = {
         "cpu": "armeabi-v7a",
+    },
+)
+
+config_setting(
+    name = "armv6",
+    values = {
+        "cpu": "armv6",
     },
 )
 
@@ -305,6 +317,9 @@ cc_library(
         ],
         ":armv7a": [
             ":neon_tensor_utils",
+        ],
+        ":armv6": [
+            ":portable_tensor_utils",
         ],
         ":ios_armv7": [
             ":neon_tensor_utils",

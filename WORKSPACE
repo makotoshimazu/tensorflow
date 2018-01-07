@@ -89,3 +89,9 @@ new_http_archive(
         "http://download.tensorflow.org/models/speech_commands_v0.01.zip",
     ],
 )
+
+new_local_repository(
+        name = "toolchain_target_armv6",
+        path = "/home/shimazu/af2018/raspberry_pi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf",
+        build_file = "armv6-compiler/cross_toolchain_target_armv6.BUILD",
+)
